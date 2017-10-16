@@ -1,19 +1,27 @@
 <html>
-    <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width,initial-scale=1.0">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="quote.js"></script>
-            <link rel="stylesheet" href="styles.css">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-            
-    </head>
-    <body>
-        <footer>
+        <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width,initial-scale=1.0">
+                <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;" >                
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="script.js"></script>
+                <link rel="stylesheet" href="styles.css">
+                <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+                
+        </head>
+        <body>
             <div>
-                    <p class="quote-text"></p>
-                    <p class="author-text"></p>
-            </div>    
-        </footer>
-    </body>    
-</html>  
+                <p class="display-time"></p>
+                
+                <p class="display-weather"></p>
+                <p class="display-location"></p>
+                
+            </div>
+            <footer>
+                <div>
+                        <p class="quote-text"></p>
+                        <p class="author-text"></p>
+                </div>    
+            </footer>
+        </body>    
+    </html>  
