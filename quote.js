@@ -40,8 +40,9 @@ var getQuote= (data)=>{
          $.getJSON(url,(response)=>{
              console.log(response);
             var tempDegree="&deg;F";
-            
-          $('.display-weather').text(response.currently.temperature);
+            var icon = response.daily.data[0].icon;
+            $('.display-weather').html(Math.round(response.currently.temperature)+tempDegree);      
+            $(".weather-icon").html("<i class='wi wi-forecast-io-" + icon + "'></i>");
         })
         .fail(function() {
             console.log( "Cannot retrieve weather for your location" );

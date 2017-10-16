@@ -3,25 +3,28 @@
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width,initial-scale=1.0">
                 <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;" >                
+                <link rel="stylesheet" href="styles.css">
+                <link rel='stylesheet' type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css"> 
+
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script src="script.js"></script>
-                <link rel="stylesheet" href="styles.css">
-                <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+                
+                
                 
         </head>
         <body>
-            <div>
-                <p class="display-time"></p>
-                
-                <p class="display-weather"></p>
-                <p class="display-location"></p>
-                
+            <div class= "weather">  
+                <span class="display-weather text-right">weather</span>
+                <span class="weather-icon">abc</span>
+                <div class="display-location">My location</div>
             </div>
             <footer>
                 <div>
-                        <p class="quote-text"></p>
-                        <p class="author-text"></p>
+                    <p class="quote-text"></p>
                 </div>    
             </footer>
         </body>    
     </html>  
+
+
+    
