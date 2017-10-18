@@ -30,7 +30,7 @@ var getQuote= (data)=>{
      var getWeather= (position)=>{
         var lat =position.coords.latitude;
         var lng = position.coords.longitude;
-       var  url= `https://api.darksky.net/forecast/"e446c63584e4c1c50e08f61db0ce7efa"/${lat},${lng}?callback=?`;
+       var  url= `https://api.darksky.net/forecast/e446c63584e4c1c50e08f61db0ce7efa/${lat},${lng}?callback=?`;
        console.log(url);
          $.getJSON(url,(response)=>{
             var tempDegree="&deg;F";
