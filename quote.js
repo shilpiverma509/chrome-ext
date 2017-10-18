@@ -13,14 +13,12 @@ var getQuote= (data)=>{
  var getLocation = (position)=>{
      var lat =position.coords.latitude;
      var lng = position.coords.longitude;
-     API_key="Enter your key";
-     console.log(lat);
-     console.log(lng);
+     API_key="AIzaSyAj_8ug2w-MjDHqx4mvQoJXlnFxV2-riBM";
      const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_key}`;
      console.log (url);
         $.getJSON(url,(data)=>{
             console.log(data);
-        $('.display-location').text(data.results[3].formatted_address);
+        $('.display-location').text(data.results[3].address_components[0].short_name);
 
      })
      .done(getWeather)
@@ -32,13 +30,9 @@ var getQuote= (data)=>{
      var getWeather= (position)=>{
         var lat =position.coords.latitude;
         var lng = position.coords.longitude;
-       console.log(`lat is : ${lat}`);
-       console.log(`long is :${lng}`);
-       
-       var  url= `https://api.darksky.net/forecast/"Enter your key"/${lat},${lng}?callback=?`;
+       var  url= `https://api.darksky.net/forecast/e446c63584e4c1c50e08f61db0ce7efa/${lat},${lng}?callback=?`;
        console.log(url);
          $.getJSON(url,(response)=>{
-             console.log(response);
             var tempDegree="&deg;F";
             var icon = response.currently.icon;
             $('.display-weather').html(Math.round(response.currently.temperature)+tempDegree);      
