@@ -6,6 +6,7 @@ var getQuote= (data)=>{
     if(data.author===""){
         data.author="Unknown";
     }
+    $(".author-text").text(`-${data.author}`);
 };
 
 
@@ -45,10 +46,16 @@ var getQuote= (data)=>{
     };  
 
 
- 
- 
+    
+    
+$(document).ajaxStop(function () {
+        $('#loading').hide();
+    });
 $(document).ready(()=>{
     $.getJSON(quoteAPI,'data',getQuote);
     navigator.geolocation.getCurrentPosition(getLocation);
     navigator.geolocation.getCurrentPosition(getWeather);
+});
+$(document).ajaxStart(function () {
+    $('#loading').show();
 });
