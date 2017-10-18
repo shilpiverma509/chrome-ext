@@ -40,7 +40,7 @@ var getQuote= (data)=>{
          $.getJSON(url,(response)=>{
              console.log(response);
             var tempDegree="&deg;F";
-            var icon = response.daily.data[0].icon;
+            var icon = response.currently.icon;
             $('.display-weather').html(Math.round(response.currently.temperature)+tempDegree);      
             $(".weather-icon").html("<i class='wi wi-forecast-io-" + icon + "'></i>");
         })

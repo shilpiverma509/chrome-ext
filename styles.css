@@ -17,6 +17,11 @@ html{
 
 /* Weather */
 
+.weather{
+        position: relative;
+        float: right;
+}
+
 .weather-icon{
     color: #e67e22;
     display: inline-block;
@@ -29,6 +34,8 @@ html{
     line-height:120%;
 } 
 
+
+
 .display-weather{
     margin-top: 10px;
     display: inline-block;
@@ -39,7 +46,7 @@ html{
 .display-location{
     font-family: 'Roboto',arial,sans-serif;
     font-size: 120%;
-    margin-top: 5px;    
+    margin-top: 5px;
 }
 
 
