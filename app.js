@@ -5,7 +5,18 @@ var select = document.querySelector('select');
 
 
 var d = new Date()
+//changes background from day to night from 6:00pm to 6 a.m.
+function updateBackground(){
+    var hour = d.getHours();
 
+    if(hour > 6 && hour < 18) 
+        document.body.style.backgroundImage = "url('images/brightSky.jpg')";
+    else
+        document.body.style.backgroundImage = "url('images/darkSky.jpg')";
+}
+updateBackground();
+
+//takes month for creating calendar
 var monthArray = new Array(12);
 monthArray[0] = "January";
 monthArray[1] = "Febuary";
@@ -23,6 +34,7 @@ monthArray[11] = "December";
 var utcMonth = monthArray[d.getUTCMonth()];
 
 
+//updates the date every second
 function updateClock(){
     var date = new Date();
     var n = date.toDateString();
@@ -35,16 +47,7 @@ function updateClock(){
  setInterval(updateClock, 1000); 
 
 
-
-
-
-
-
-
-
-
-            
-
+ //creates a calendar depending upon which month it is
 function createCalendar(days, choice){
     elList.innerHTML = '';
     elH1.textContent = utcMonth;
@@ -62,6 +65,3 @@ function createCalendar(days, choice){
 }
 
 createCalendar();
-
-   
-
