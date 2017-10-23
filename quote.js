@@ -1,4 +1,5 @@
 
+
 var quoteAPI="http://quotes.stormconsultancy.co.uk/random.json";
 
 var getQuote= (data)=>{
@@ -45,8 +46,6 @@ var getQuote= (data)=>{
     
     };  
 
-
-    
     
 $(document).ajaxStop(function () {
         $('#loading').hide();
