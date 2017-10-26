@@ -5,6 +5,8 @@ var select = document.querySelector('select');
 
 
 var d = new Date();
+// var today = date.getDate() + "_" + (date.getMonth()+1) + "_" + date.getFullYear();
+
 //changes background from day to night from 6:00pm to 6 a.m.
 function updateBackground(){
     var hour = d.getHours();

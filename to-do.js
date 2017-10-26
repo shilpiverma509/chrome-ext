@@ -3,9 +3,17 @@
 //retrieve todo's from localStorage.Retun an empty array if no list is found
 //localStorage are key/valye pairs and always stored as strings. Always parse them
 //to a valid JS object before using them
+
+var date = new Date(); // current date
+var dateClicked = date.getDate() + "_" + (date.getMonth()+1) + "_" + date.getFullYear();
+
+var month = (date.getMonth())+1; //current month
+var year = date.getFullYear(); //current year
+
+//get todo's from localStorage
 function get_todos(){
     var todos = [];
-    var todos_str = localStorage.getItem('todo');
+    var todos_str = localStorage.getItem(dateClicked); 
     if(todos_str !=null){
         todos = JSON.parse(todos_str);
     }
@@ -14,12 +22,15 @@ function get_todos(){
 // Adding a new TODO entry
 function add(){
     var todos = get_todos();
-    var task = $('#task').val();
-    var taskObj = {};
-    taskObj.task = task;
-    taskObj.isDone = false;
+    var task = $('#task').val();     
+    var taskObj = {    
+        task:task,
+        isDone:false,
+    };
+    
     todos.push(taskObj);
-    localStorage.setItem('todo',JSON.stringify(todos));
+    
+    localStorage.setItem(dateClicked,JSON.stringify(todos));
     //update list of the TODO's displayed on webpage
     show();
     $("input").val("");
@@ -32,12 +43,12 @@ function removeStorage(){
     var todos = get_todos();    
     var id = event.currentTarget.getAttribute('id');
         todos.splice(id,1);
-    localStorage.setItem('todo',JSON.stringify(todos));
+    localStorage.setItem(dateClicked,JSON.stringify(todos));
     show();
     return false;
 }
 
-//update localStorage
+//update localStorage for completed tasks
 function updateLocalStorage(val){
     
      var todos = get_todos();
@@ -46,11 +57,11 @@ function updateLocalStorage(val){
                     todos[i].isDone = true;
             }
         }
-    localStorage.setItem('todo',JSON.stringify(todos));
+    localStorage.setItem(dateClicked,JSON.stringify(todos));
     
 }
 
-//display th current todo list stored in the LocalStorage
+//display the current todo list on webpage
 function show(){
 
     var todos = get_todos();
@@ -71,12 +82,10 @@ function show(){
         updateLocalStorage($(this).attr("value"));
 
     });
-
-
 }
 
 $("input").keydown(function(e){
-    if(e.keyCode===13){
+    if( $(this).val()!=="" && e.keyCode===13){
         event.preventDefault();
         add();    
     }
@@ -98,16 +107,35 @@ $(".cross").hide();
         });
    });
 
-   $("#todos").on('click','li',function(){
-    $(this).addClass("taskCompleted");
+$("#days").click(function(event){
+    // $(".todo-bar").slideToggle( "slow", function() {
+    //     $( ".hamburger" ).hide();
+    //     $( ".cross" ).show();
+    //     });
+    $(".todo-bar").show("slow",function(){
+        $(".hamburger").hide();
+        $(".cross").show();
+    });
+
+    dateClicked = $(event.target).text()+ "_" + month + "_" + year; 
+    show();    
+    //console.log(id);       
 });
-$("#days").click(()=>{
-    $(".todo-bar").slideToggle( "slow", ()=> {
-        $( ".hamburger" ).hide();
-        $( ".cross" ).show();
-        });
-        $(".hamburger").show();   
+
+$(document).ready(function(){
+    document.getElementById("todo-bar").onload = function(){
+        show();
+    };   
+        
 });
+show(); 
+
+
+
+
+
+
+
+
   
    
-show();
