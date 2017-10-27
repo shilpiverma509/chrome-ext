@@ -12,7 +12,7 @@ function updateBackground(){
     var hour = d.getHours();
 
     if(hour > 6 && hour < 18) 
-        document.body.style.backgroundImage = "url('images/brightSky.jpg')";      
+        document.body.style.backgroundImage = "url('images/day.jpg')";      
     else
         document.body.style.backgroundImage = "url('images/darkSky.jpg')";
 }
