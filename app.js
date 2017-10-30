@@ -4,13 +4,15 @@ var elH1 = document.querySelector('h1');
 var select = document.querySelector('select');
 
 
-var d = new Date()
+var d = new Date();
+// var today = date.getDate() + "_" + (date.getMonth()+1) + "_" + date.getFullYear();
+
 //changes background from day to night from 6:00pm to 6 a.m.
 function updateBackground(){
     var hour = d.getHours();
 
     if(hour > 6 && hour < 18) 
-        document.body.style.backgroundImage = "url('images/brightSky.jpg')";
+        document.body.style.backgroundImage = "url('images/day.jpg')";      
     else
         document.body.style.backgroundImage = "url('images/darkSky.jpg')";
 }
@@ -39,7 +41,7 @@ function updateClock(){
     var date = new Date();
     var n = date.toDateString();
     var time = date.toLocaleTimeString();
-    var elTime = document.getElementById('time')
+    var elTime = document.getElementById('time');
     timeContent = elTime.innerHTML;
     elTime.innerHTML = n + ' ' + time;
 }

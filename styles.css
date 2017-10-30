@@ -5,13 +5,15 @@
     box-sizing: border-box;
 }
 html{
-    background-color: #fff;
-    color: #555;
+    color: #FDF4F4;
     font-family: "Lato", "Arial", "sans-serif";
     font-size:20px;
     font-weight: 300;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+   
 }
 
 
@@ -47,6 +49,7 @@ html{
     font-family: 'Roboto',arial,sans-serif;
     font-size: 120%;
     margin-top: 5px;
+
 }
 
 
@@ -57,42 +60,247 @@ footer {
     bottom: 0;
     left: 0;
     padding: 1rem;
-    background-color: #efefef;
+    /* background-color: #efefef; */
     text-align: center;
-    font-size: 60%;
+    font-size:75%;
+    color: white;
+    font-weight: 300;
+    margin-bottom: footer height; 
+    
   }
 
 /* Declan styles for calendar */
 
-body {
-    height: 100%;
-}
+
 
 #monthName {
     text-align: center;
     text-decoration: underline;
+    display: inline-block;
+
 }
 
 #time {
     position: relative;
     text-align: center;
-    padding-right
 }
 
-li {
-    background-color: rgb(243, 242, 242);
+div#monthOutput li{
+    /* background-color: rgba(243, 242, 242); */
+    background-color: rgba(71, 69, 69, 0);
     height: 100px;
     width: 150px;
     margin: .5px;
     text-decoration: none;
     display: inline-block;
     border-style: ridge;
+    border-width:.5px;
+    cursor: pointer;
 }
 
 #monthOutput {
     padding: 70px;
+    
 }
 
 h1 {
     color: #ECECEC;
+    position: absolute;
+}
+
+#days{
+    color:white;
+    margin-top: 2em;
+}
+
+
+/* todos */
+
+.todo-container{
+
+    position: absolute; 
+    left:.31em;
+    top:.5em;
+    width: 3em;
+    padding: 1.5em;
+    border-radius: 100%;
+    transition: all .2s ease-out;
+    
+}
+
+#todos{
+    color:black;
+    display: block;
+    /* background: rgba(0,0,0,.2); */
+}
+
+/* rgba(0,0,0,.5); */
+
+#task{
+  /* background:  rgba(255, 255, 255, 0.96); */
+  background: rgba(0,0,0,.5);
+  border: none;
+  font-size: 80%;
+  color: #fff;
+  border-radius: 6px;
+  width: 230px;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+  
+}
+  
+  /* box-shadow: 
+  inset 0 0 8px  rgba(94, 93, 93, 0.06),
+        0 0 16px rgba(100, 99, 99, 0.1); */
+
+input[type=text]{
+    color:black;
+    padding-left:10px;
+}
+
+.todo-bar{
+    /* margin-top:10px; */
+    margin-left: 17px;;
+    /* background-color: red; */
+    /* background-color: rgba(0, 0, 0, 0.35); */
+    /* background-color: black; */
+    background: linear-gradient(#E7E9BB, #403B4A);
+    width: 275px;
+    position: absolute;
+    top: 5em; left: 1em; 
+    max-height: 100%;
+    border-radius: 4px;
+    
+
+}
+
+
+
+div.todo-list ul{
+    margin: 0;
+    padding: 0;
+    width: auto;
+    list-style: none;
+}
+
+div.todo-list li{
+    cursor: pointer;
+    position: relative;
+    padding: 2px 20px 12px 20px;
+    width:275px;
+    font-size: 80%;
+    transition: all 0.2s ease-out;
+    color:white;
+    letter-spacing: .5px;
+    list-style: none;
+}
+
+ .hamburger,
+.cross{
+    font-size: 120%;
+    cursor: pointer;
+    position: absolute;
+    background:transparent;
+    color:white;
+    border:0;
+    opacity: 0%;
+    padding: 5px 15px 5px 15px;
+    font-size: bold;
+    transition: all 2s ease out;
+    
+}
+button:focus {outline:0;}
+
+
+
+.hamburger,
+.cross :hover{
+    font-size: 120%;
+    cursor: pointer;
+    position: absolute;
+    background:transparent;
+    color:white;
+    border:none;
+    opacity: 100%;
+    
+
+}
+
+/* remove button */
+
+.remove{
+    position: absolute;
+    right:10px;
+    margin-left:10px;
+    margin-right: 15px;
+    width:15px;
+    height:15px;
+    padding-top:.2px;
+    cursor: pointer;
+}
+
+.taskCompleted{
+    text-decoration: line-through;
+    color:black;
+}
+
+
+
+/* Media Queries */
+@media only screen and (max-width:1347px){
+    
+    #monthOutput {
+        padding: 62px;
+    }
+}
+
+@media only screen and (max-width:1332px){
+    #monthOutput {
+        padding: 50px;
+    }
+}
+
+@media only screen and (max-width:1332px){
+   
+
+    div#monthOutput li{
+        height:100px;
+        width: 120px;
+    }
+
+    .todo-bar{
+        top:3.5em;
+        width:230px;
+
+    }
+    #task{
+        margin-left:10px;
+        width: 210px;
+        font-size:70%;
+
+    }
+    h1{
+        font-size:100%;
+    }
+     #todos{
+         overflow: hidden;
+     }   
+
+    .remove{
+        position: absolute;
+        margin-right:50px;
+        width:15px;
+        height:15px;
+        float: right;
+    }
+
+    div.todo-list li{font-size:70%}
+
+
+
+    footer{
+        font-size:60%;
+    }
 }
