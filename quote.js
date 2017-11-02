@@ -1,77 +1,95 @@
 //calendar
 
-var elDays = document.getElementById('days');
-var elList = document.querySelector('ul');
-var elH1 = document.querySelector('h1');
-var select = document.querySelector('select');
-
-
-var d = new Date();
-// var today = date.getDate() + "_" + (date.getMonth()+1) + "_" + date.getFullYear();
-
 //changes background from day to night from 6:00pm to 6 a.m.
-function updateBackground(){
+function updateBackground() {
+    var d = new Date();
+
     var hour = d.getHours();
 
-    if(hour > 6 && hour < 18) 
-        document.body.style.backgroundImage = "url('images/day.jpg')";      
+    if (hour > 6 && hour < 18)
+        document.body.style.backgroundImage = "url('images/day.jpg')";
     else
         document.body.style.backgroundImage = "url('images/darkSky.jpg')";
 }
-updateBackground();
 
-//takes month for creating calendar
-var monthArray = new Array(12);
-monthArray[0] = "January";
-monthArray[1] = "Febuary";
-monthArray[2] = "March";
-monthArray[3] = "April";
-monthArray[4] = "May";
-monthArray[5] = "June";
-monthArray[6] = "July";
-monthArray[7] = "August";
-monthArray[8] = "September";
-monthArray[9] = "October";
-monthArray[10] = "November";
-monthArray[11] = "December";
+function displayCalendar() {
+    var htmlContent = "";
+    var FebNumberOfDays = "";
+    var counter = 1;
+    var dateNow = new Date();
+    var month = dateNow.getMonth();
+    var nextMonth = month + 1; //+1; //Used to match up the current month with the correct start date.
+    var prevMonth = month - 1;
+    var day = dateNow.getDate();
+    var year = dateNow.getFullYear();
+    //Determing if February (28,or 29)  
+    if (month == 1) {
+        if ((year % 100 != 0) && (year % 4 == 0) || (year % 400 == 0)) {
+            FebNumberOfDays = 29;
+        } else {
+            FebNumberOfDays = 28;
+        }
+    }
+    // names of months and week days.
+    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"];
+    var dayPerMonth = ["31", "" + FebNumberOfDays + "", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"]
+    // days in previous month and next one , and day of week.
+    var nextDate = new Date(nextMonth + ' 1 ,' + year);
+    var weekdays = nextDate.getDay();
+    var weekdays2 = weekdays
+    var numOfDays = dayPerMonth[month];
+    // this leave a white space for days of pervious month.
+    while (weekdays > 0) {
+        htmlContent += "<td class='monthPre'></td>";
 
-var utcMonth = monthArray[d.getUTCMonth()];
+        // used in next loop.
+        weekdays--;
+    }
+    // loop to build the calander body.
+    while (counter <= numOfDays) {
+
+        // When to start new line.
+        if (weekdays2 > 6) {
+            weekdays2 = 0;
+            htmlContent += "</tr><tr>";
+        }
+        // if counter is current day.
+        // highlight current day using the CSS defined in header.
+        if (counter == day) {
+            htmlContent += "<td class='dayNow clickDate'>" + counter + "</td>";
+        } else {
+            htmlContent += "<td class='monthNow clickDate'>" + counter + "</td>";
+
+        }
+        weekdays2++;
+        counter++;
+    }
+    // building the calendar html body.
+    var calendarBody = "<table class='calendar'> <tr class='monthNow'><th colspan='7'>" +
+        monthNames[month] + " " + year + "</th></tr>";
+    calendarBody += "<tr class='dayNames'>  <td>Sun</td>  <td>Mon</td> <td>Tues</td>" +
+        "<td>Wed</td> <td>Thurs</td> <td>Fri</td> <td>Sat</td> </tr>";
+    calendarBody += "<tr>";
+    calendarBody += htmlContent;
+    calendarBody += "</tr></table>";
+    // set the content of div .
+    document.getElementById("calendar").innerHTML = calendarBody;
+}
+
 
 
 //updates the date every second
-function updateClock(){
-    var date = new Date();
-    var n = date.toDateString();
-    var time = date.toLocaleTimeString();
+function updateClock() {
+    var d = new Date();
+    var n = d.toDateString();
+    var time = d.toLocaleTimeString();
     var elTime = document.getElementById('time');
-    timeContent = elTime.innerHTML;
     elTime.innerHTML = n + ' ' + time;
 }
 
- setInterval(updateClock, 1000); 
 
-
- //creates a calendar depending upon which month it is
-function createCalendar(days, choice){
-    elList.innerHTML = '';
-    elH1.textContent = utcMonth;
-    var days = 31;
-    if(choice === 'February'){
-        days = 28;
-    } else if(choice === 'April' || choice === 'June' || choice === 'September' || choice === 'November'){
-        days = 30;
-    } 
-    for(var i = 1; i <= days; i++) {
-    var elListItem = document.createElement('li');
-    elListItem.textContent = i;
-    elList.appendChild(elListItem);
-    }
-}
-
-
-
-
-
+//get quotes
 
 var quoteAPI="http://quotes.stormconsultancy.co.uk/random.json";
 
@@ -89,7 +107,7 @@ var getQuote= (data)=>{
      var lat =position.coords.latitude;
      var lng = position.coords.longitude;
      API_key="AIzaSyAj_8ug2w-MjDHqx4mvQoJXlnFxV2-riBM";
-     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_key}`;
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_key}`;
      console.log (url);
         $.getJSON(url,(data)=>{
             console.log(data);
@@ -105,7 +123,7 @@ var getQuote= (data)=>{
      var getWeather= function(position){
         var lng = position.coords.longitude;
         var lat =position.coords.latitude;        
-      var  url= `https://api.darksky.net/forecast/e446c63584e4c1c50e08f61db0ce7efa/${lat},${lng}?callback=?`;
+       var  url= `https://api.darksky.net/forecast/e446c63584e4c1c50e08f61db0ce7efa/${lat},${lng}?callback=?`;
        console.log(url);
          $.getJSON(url,(response)=>{
             var tempDegree="&deg;F";
@@ -231,35 +249,37 @@ $(".cross").hide();
         });
    });
 
-$("#days").click(function(event){
-    // $(".todo-bar").slideToggle( "slow", function() {
-    //     $( ".hamburger" ).hide();
-    //     $( ".cross" ).show();
-    //     });
-    $(".todo-bar").show("slow",function(){
-        $(".hamburger").hide();
-        $(".cross").show();
+function taskDate() {
+    $(document).on('click', '.clickDate', function () {
+        $(".todo-bar").show("slow", function (event) {
+            $(".hamburger").hide();
+            $(".cross").show();
+        });
+        dateClicked = $(event.target).text() + "_" + month + "_" + year;
+        console.log(dateClicked);
+        show();
     });
-
-    dateClicked = $(event.target).text()+ "_" + month + "_" + year; 
-    show();    
-    //console.log(id);       
-});
-
-
+}
     
 $(document).ajaxStop(function () {
         $('#loading').hide();
     });
 $(document).ready(()=>{
+    updateBackground();
+    setInterval(updateClock, 1000);
     $.getJSON(quoteAPI,'data',getQuote);
     navigator.geolocation.getCurrentPosition(getLocation);
     navigator.geolocation.getCurrentPosition(getWeather);   
     show();
-    createCalendar();
-    
-        
+    taskDate();
+
+
+   
 });
 $(document).ajaxStart(function () {
     $('#loading').show();
 });
+
+
+
+
