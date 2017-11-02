@@ -1,0 +1,23 @@
+{
+  "name": "chrome-ext",
+  "version": "1.0.0",
+  "description": "clone momentum- chingu voyage-2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shilpiverma509/chrome-ext.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shilpiverma509/chrome-ext/issues"
+  },
+  "homepage": "https://github.com/shilpiverma509/chrome-ext#readme",
+  "dependencies": {
+    "express": "^4.16.0"
+  }
+}
