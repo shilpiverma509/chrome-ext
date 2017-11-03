@@ -16,9 +16,21 @@ html,body{
     width: 100%;
     height: 100%;
 }
+.clearfix {
+    zoom: 1
+}
 
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
 
 /* Weather */
+
+
 
 .weather{
         position: relative;
@@ -55,8 +67,16 @@ html,body{
 
 
 h1{
-    font-size:150%;
-       margin: 25px auto;
+        /* margin: 10px auto; */
+    margin-top:0;
+     position: relative;
+     font-size: 200%;
+     word-spacing: 5px;
+     letter-spacing: 1px;
+     text-align: center;
+     top:-20px;
+     font-weight: 300;
+     text-transform: uppercase;
 }
 footer {
     position: absolute;
@@ -73,33 +93,10 @@ footer {
     
   }
 
-
-#monthName {
-    text-align: center;
-    text-decoration: underline;
-    display: inline-block;
-
-}
-
-#time {
-    position: relative;
-    text-align: center;
-}
-
-
-
 #monthOutput {
     padding: 70px;
     
 }
-
-h1 {
-    color: #ECECEC;
-    position: absolute;
-}
-
-
-
 
 /* todos */
 
@@ -119,6 +116,7 @@ h1 {
     color:black;
     display: block;
     /* background: rgba(0,0,0,.2); */
+
 }
 
 /* rgba(0,0,0,.5); */
@@ -192,11 +190,13 @@ div.todo-list li{
     position: absolute;
     background:transparent;
     color:white;
-    border:0;
+    border:1px solid #e67e22;
     opacity: 0%;
     padding: 5px 15px 5px 15px;
     font-size: bold;
     transition: all 2s ease out;
+      
+
     
 }
 button:focus {outline:0;}
@@ -210,7 +210,7 @@ button:focus {outline:0;}
     position: absolute;
     background:transparent;
     color:white;
-    border:none;
+    border: 1px solid #bf6516;
     opacity: 100%;
     
 
@@ -227,6 +227,7 @@ button:focus {outline:0;}
     height:15px;
     padding-top:.2px;
     cursor: pointer;
+    border:1px solid #e67e22;
 }
 
 .taskCompleted{
@@ -240,17 +241,25 @@ button:focus {outline:0;}
 
 #calendar {
     margin: 25px auto;
-    width: 400px;
+    width: 500px;
     cursor: pointer;
     border-spacing: 0;
-    border:none;
+    border:1px solid rgba(0, 0, 0, 0.4);
+    border-radius:4px;
+    box-shadow:inset 2px 2px 2px rgba(0, 0, 0, 0.4),
+    2px 2px 2px rgba(0, 0, 0, 0.4);
+    border-radius:4px;
+    
 }
 .calendar{ 
-    width:400px;
      text-transform: uppercase;
+     width: 500px;
+    height:400px;
+
      font-family: Tahoma;
      font-size: 15px;
-     background: #141517;
+background: rgba(0, 0, 0, 0.253);
+        /* background: linear-gradient(#000000, #434343); */
      -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
      border-radius: 3px;
@@ -263,7 +272,7 @@ button:focus {outline:0;}
 }
 
 .monthPre {
-    color: #565656;
+    color: #fff;
     text-align: center;
 }
 
@@ -271,12 +280,13 @@ button:focus {outline:0;}
     text-align: center;
      position: relative;
      padding-right: 15px;
-     color: #565656;
+     color: #fff;
+     font-weight:bold;
 }
 
-.dayNow {
-    border: 2px solid black;
-    color: #FF0000;
+.dayNow {   
+    border: 2px solid rgba(100, 99, 99, 0.486);
+    color: rgb(0, 255, 98);
     text-align: center;
 }
 
@@ -291,7 +301,7 @@ button:focus {outline:0;}
     background: black;
 }
 #calendar td:hover{
-    background: rgba(255, 255, 255, 0.774);
+    background: rgba(255, 255, 255, 0.308);
 }
 
 .monthNow th {
@@ -303,10 +313,11 @@ button:focus {outline:0;}
      text-align: center;
      font-weight: normal;
      color: #a8a8a8;
+     font-weight: bold;
 }
 
 .dayNames {
-    background: #0FF000;
+    background: rgb(240, 68, 0);
     color: #FFFFFF;
     text-align: center;
 }
@@ -367,4 +378,61 @@ button:focus {outline:0;}
     footer{
         font-size:60%;
     }
+}
+
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+
+/* Portrait and Landscape */
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 667px) {
+h1{
+    font-size:60%;
+    top:100px;
+    left: 30px;
+}
+#calendar{
+    width:100px;
+    font-size:30%;
+    margin-top:120px;
+    margin-left: -10px;
+}
+    .calendar{
+    width:80px;
+    height:80px; 
+    
+}
+.monthNow{
+    padding: 0;
+    font-size: 90%;
+}
+.dayNames{
+    font-size: 60%;
+}
+.weather{
+    font-size:60%;
+}
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 767 {
+
+#calendar {
+    width: 100px;
+    font-size: 30%;
+    margin-top: 120px;
+    margin-left: 30px;
+}
+.calendar {
+     width: 100px;
+     height: 120px;
+ }
+}
+
+@media only screen and (max-width: 768px) {
+
+#calendar{
+    margin: 150px auto;
+    }
+
 }
