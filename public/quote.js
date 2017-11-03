@@ -91,7 +91,7 @@ function updateClock() {
 
 //get quotes
 
-var quoteAPI="http://quotes.stormconsultancy.co.uk/random.json";
+var quoteAPI="https://quotes.stormconsultancy.co.uk/random.json";
 
 var getQuote= (data)=>{
     $(".quote-text").text(data.quote);
