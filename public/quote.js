@@ -272,7 +272,7 @@ $(document).ready(()=>{
     navigator.geolocation.getCurrentPosition(getWeather);   
     show();
     taskDate();
-
+    displayCalendar();
 
    
 });

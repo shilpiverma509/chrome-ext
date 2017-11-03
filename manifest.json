@@ -6,7 +6,7 @@
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "/images/icon.png"
+    "default_icon": "public/images/icon.png"
   },
   "permissions": [
     "tabs",
@@ -14,15 +14,15 @@
     "geolocation"
   ],
   "chrome_url_overrides":{
-    "newtab" : "index.html"
+    "newtab" : "public/index.html"
 },
 "content_scripts":[
    { 
        "matches":["https://*/*","http://*/*"],
-       "css":["styles.css"],
-       "js":["quote.js"]
+       "css":["public/styles.css"],
+       "js":["public/quote.js"]
     }
 ],
 
-"content_security_policy": "script-src 'self' https://ajax.googleapis.com https://api.darksky.net/forecast/; 'unsafe-eval'; object-src 'self'"
+"content_security_policy": "script-src 'self' https://ajax.googleapis.com https://api.darksky.net/forecast/;'unsafe-inline'; 'unsafe-eval'; object-src 'self'"
 }
